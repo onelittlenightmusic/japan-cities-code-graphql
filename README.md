@@ -16,6 +16,15 @@ https://japan-cities-code.now.sh/
 - cities
 - city(name: "origanization name in Japanese Kanji")
 
+Fields
+
+- code
+- prefectureKanji
+- prefectureKana
+- cityKanji
+- cityKana
+
+
 ![](2018-10-14-13-18-41.png)
 
 ![](2018-10-14-13-20-21.png)
