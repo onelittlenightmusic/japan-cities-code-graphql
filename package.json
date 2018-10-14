@@ -1,0 +1,32 @@
+{
+  "name": "japan-cities-code-graphql",
+  "version": "1.0.0",
+  "description": "GraphQL API for Japan cities code by MIC Japan",
+  "main": "index.ts",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --ext ts,yaml --exec 'ts-node' index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/onelittlenightmusic/japan-cities-code-graphql.git"
+  },
+  "author": "Hiroyuki OSAKI <hiroyuki.osaki@gmail.com> (https://github.com/onelittlenightmusic)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/onelittlenightmusic/japan-cities-code-graphql/issues"
+  },
+  "homepage": "https://github.com/onelittlenightmusic/japan-cities-code-graphql#readme",
+  "dependencies": {
+    "@types/request": "^2.47.1",
+    "@types/request-promise-native": "^1.0.15",
+    "graphql-yoga": "^1.16.2",
+    "request": "^2.88.0",
+    "request-promise-native": "^1.0.5"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.1.3"
+  }
+}
