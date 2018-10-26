@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon --ext ts,yaml --exec 'ts-node' index.ts"
+    "startDev": "nodemon --ext ts,yaml --exec 'ts-node' index.ts",
+    "start": "ts-node index.ts"
   },
   "repository": {
     "type": "git",
@@ -18,15 +19,17 @@
   },
   "homepage": "https://github.com/onelittlenightmusic/japan-cities-code-graphql#readme",
   "dependencies": {
+    "@types/dotenv": "^4.0.3",
     "@types/request": "^2.47.1",
     "@types/request-promise-native": "^1.0.15",
+    "dotenv": "^6.1.0",
     "graphql-yoga": "^1.16.2",
     "request": "^2.88.0",
-    "request-promise-native": "^1.0.5"
-  },
-  "devDependencies": {
-    "nodemon": "^1.18.4",
+    "request-promise-native": "^1.0.5",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.3"
+  },
+  "devDependencies": {
+    "nodemon": "^1.18.4"
   }
 }

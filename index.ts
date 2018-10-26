@@ -1,6 +1,9 @@
 import { GraphQLServer } from 'graphql-yoga'
 import request from 'request-promise-native'
+import { config } from 'dotenv'
+config()
 
+const PORT = process.env.PORT
 var download = async function(url: string) {
   var body = await request.get({url});
   var response = {}
@@ -12,7 +15,7 @@ var download = async function(url: string) {
 }
 
 async function run() {
-    var response: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/5513a4a5b8252e0eed4c557bd7e1bd2f/raw/67f7ffb4ef5ff98ba2c49b4bdf57b57165e69953/japancitiescode.json')
+    var response: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/5513a4a5b8252e0eed4c557bd7e1bd2f/raw/japancitiescode.json')
 
     const cities = response['data']
     console.log(response)
@@ -58,7 +61,7 @@ async function run() {
     }
   }
 	const server = new GraphQLServer({ typeDefs, resolvers })
-	server.start({port: 4040, formatResponse}, () =>
+	server.start({port: PORT, formatResponse}, () =>
 		console.log(`Your GraphQL server is running now ...`),
 	)
 }
