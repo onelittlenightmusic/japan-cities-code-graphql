@@ -1,24 +1,18 @@
 import { GraphQLServer } from 'graphql-yoga'
-import request from 'request-promise-native'
+import fetch from 'node-fetch'
 import { config } from 'dotenv'
 config()
 
 const PORT = process.env.PORT
 var download = async function(url: string) {
-  var body = await request.get({url});
-  var response = {}
-  console.log(body)
-  if(typeof body == 'string') {
-       response = JSON.parse(body)
-  }
-  return response
+  var response = await fetch(url);
+  return (await response.json())
 }
 
 async function run() {
     var response: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/5513a4a5b8252e0eed4c557bd7e1bd2f/raw/japancitiescode.json')
 
     const cities = response['data']
-    console.log(response)
 	const typeDefs = `
     # Comments in GraphQL are defined with the hash (#) symbol.
     # This "Book" type can be used in other type declarations.
