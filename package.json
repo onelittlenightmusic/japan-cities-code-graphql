@@ -21,12 +21,9 @@
   "dependencies": {
     "@types/dotenv": "^4.0.3",
     "@types/node-fetch": "^2.1.2",
-    "@types/request": "^2.47.1",
-    "@types/request-promise-native": "^1.0.15",
     "dotenv": "^6.1.0",
     "graphql-yoga": "^1.16.2",
     "node-fetch": "^2.2.0",
-    "request": "^2.88.0",
     "ts-node": "^7.0.1",
     "typescript": "^3.1.3"
   },
