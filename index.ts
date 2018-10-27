@@ -10,9 +10,9 @@ var download = async function(url: string) {
 }
 
 async function run() {
-    var response: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/5513a4a5b8252e0eed4c557bd7e1bd2f/raw/japancitiescode.json')
+  var response: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/5513a4a5b8252e0eed4c557bd7e1bd2f/raw/japancitiescode.json')
 
-    const cities = response['data']
+  const cities = response['data']
 	const typeDefs = `
     # Comments in GraphQL are defined with the hash (#) symbol.
     # This "Book" type can be used in other type declarations.
@@ -21,9 +21,9 @@ async function run() {
       code: String
       # Prefecture name written in Kanji (example: "愛知"), String
       prefectureKanji: String
-      # Prefecture name written in Japanese Kanji (example: "名古屋市"), String
+      # Prefecture name written in Japanese Kana (example: "Fukushima", "ｱｲﾁ"), String
       prefectureKana: String
-      # City name written in Kana (example: "Fukushima", "ｱｲﾁ"), String
+      # City name written in Kanji (example: "名古屋市"), String
       cityKanji: String
       # City name written in Japanese Kana (example: "ﾅｺﾞﾔ"), String
       cityKana: String
@@ -31,14 +31,22 @@ async function run() {
     # The "Query" type is the root of all GraphQL queries.
     # (A "Mutation" type will be covered later on.)
     type Query {
-      cities: [City]
+      cities(name_in: [String]): [City]
       city(name: String!): City
     }
   `;
 
   const resolvers = {
     Query: {
-      cities: () => cities,
+      cities: (obj: any, param: any, context: any) => {
+        if(param != null) {
+          var names = param.name_in
+          if(names != null) {
+            return cities.filter((element: any) => {return names.includes(element['cityKanji'])})
+          }
+        }
+        return cities
+      },
       city: (obj:any, param:any, context: any) => cities.find((element: any) => {return element['cityKanji'] === param.name})
     },
   };
