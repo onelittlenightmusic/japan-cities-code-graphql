@@ -13,7 +13,7 @@ http://www.data.go.jp/data/dataset/soumu_20140909_0395/resource/dff2cb46-a11e-48
 
 ## API 
 
-https://japan-cities-code.now.sh/
+https://graphqlbin.com/v2/pQPnTz
 
 - cities
 - city(name: "origanization name in Japanese Kanji")
