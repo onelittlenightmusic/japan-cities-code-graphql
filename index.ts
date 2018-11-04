@@ -13,28 +13,7 @@ async function run() {
   var response: any = await download('https://gist.githubusercontent.com/onelittlenightmusic/5513a4a5b8252e0eed4c557bd7e1bd2f/raw/japancitiescode.json')
 
   const cities = response['data']
-	const typeDefs = `
-    # Comments in GraphQL are defined with the hash (#) symbol.
-    # This "Book" type can be used in other type declarations.
-    type City {
-      # Organization code (example: "10006"), String
-      code: String
-      # Prefecture name written in Kanji (example: "愛知"), String
-      prefectureKanji: String
-      # Prefecture name written in Japanese Kana (example: "Fukushima", "ｱｲﾁ"), String
-      prefectureKana: String
-      # City name written in Kanji (example: "名古屋市"), String
-      cityKanji: String
-      # City name written in Japanese Kana (example: "ﾅｺﾞﾔ"), String
-      cityKana: String
-    }
-    # The "Query" type is the root of all GraphQL queries.
-    # (A "Mutation" type will be covered later on.)
-    type Query {
-      cities(name_in: [String]): [City]
-      city(name: String!): City
-    }
-  `;
+	const typeDefs = 'schema.graphql';
 
   const resolvers = {
     Query: {
