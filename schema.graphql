@@ -1,26 +1,27 @@
+"Type City"
 type City {
-    """Organization code (example: "10006"), String"""
+    "Organization code (example: \"10006\"), String"
     code: String
-    """Prefecture name written in Kanji (example: "愛知"), String"""
+    "Prefecture name written in Kanji (example: \"愛知\"), String"
     prefectureKanji: String
-    """Prefecture name written in Japanese Kana (example: "Fukushima", "ｱｲﾁ"), String"""
+    "Prefecture name written in Japanese Kana (example: \"Fukushima\", \"ｱｲﾁ\"), String"
     prefectureKana: String
-    """City name written in Kanji (example: "名古屋市"), String"""
+    "City name written in Kanji (example: \"名古屋市\"), String"
     cityKanji: String
-    """City name written in Japanese Kana (example: "ﾅｺﾞﾔ"), String"""
+    "City name written in Japanese Kana (example: \"ﾅｺﾞﾔ\"), String"
     cityKana: String
 }
 """
-The "Query" type is the root of all GraphQL queries.
-(A "Mutation" type will be covered later on.)
+Queries
 """
 type Query {
-    """City codes for cities matching condition."""
+    "City codes for cities matching condition."
     cities(
-        """Array of city names in Japanese"""
+        "Array of city names in Japanese"
         name_in: [String]
     ): [City]
-    """City code for a designated city"""
-    city("""City name in Japanese"""
+    "City code for a designated city"
+    city(
+        "City name in Japanese"
         name: String!): City
 }

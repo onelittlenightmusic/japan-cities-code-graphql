@@ -2,6 +2,7 @@ import { GraphQLServer } from 'graphql-yoga'
 import fetch from 'node-fetch'
 import { config } from 'dotenv'
 config()
+// import { QueryResolvers } from "./generated/graphqlgen";
 
 const PORT = process.env.PORT
 var download = async function(url: string) {
@@ -15,6 +16,21 @@ async function run() {
   const cities = response['data']
 	const typeDefs = 'schema.graphql';
 
+
+  // const Query: QueryResolvers.Type = {
+  //   ...QueryResolvers.defaultResolvers,
+  //   cities: (_, args) => {
+  //     if(args != null) {
+  //       var names = args.name_in
+  //       if(names != null) {
+  //         return cities.filter((element: any) => (<string[]>names).some(name => name === element['cityKanji']))
+  //       }
+  //     }
+  //     return cities
+  //   },
+  //   city: (_, args) => cities.find((element: any) => {return element['cityKanji'] === args.name})
+  // };
+  // const resolvers: any = {Query}
   const resolvers = {
     Query: {
       cities: (obj: any, param: any, context: any) => {
@@ -29,6 +45,7 @@ async function run() {
       city: (obj:any, param:any, context: any) => cities.find((element: any) => {return element['cityKanji'] === param.name})
     },
   };
+
 
   const formatResponse = (response:any) => {
     var meta = {
